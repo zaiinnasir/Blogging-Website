@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/zaiinnasir/Blogging-Website/issues"
   },
-  "homepage": "https://github.com/zaiinnasir/Blogging-Website#readme"
+  "homepage": "https://github.com/zaiinnasir/Blogging-Website#readme",
+  "devDependencies": {
+    "stylelint": "^16.14.0",
+    "stylelint-config-standard": "^37.0.0"
+  }
 }

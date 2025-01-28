@@ -11,21 +11,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
       - name: Install Parcel
         run: npm install -g parcel
       - name: Build the Website
         run: parcel build src/index.html
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
+          name: github-pages
           path: dist
 
   deploy:
     name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write  
-      pages: write
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+          path: dist
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
